@@ -1,0 +1,31 @@
+{
+  "asset": "assets/spritesheet.png",
+  "change": "Scale populated sprite artwork to 135% around each frame's visual center",
+  "sourcePreserved": true,
+  "spriteVersion": 2,
+  "dimensions": [
+    1536,
+    2288
+  ],
+  "cell": [
+    192,
+    208
+  ],
+  "framesPerRow": [
+    6,
+    8,
+    8,
+    4,
+    5,
+    8,
+    6,
+    6,
+    6,
+    8,
+    8
+  ],
+  "transparent": true,
+  "validated": true,
+  "errors": [],
+  "sha256": "403e172cbe3fcdd42c3420e01224c61c244667882e6d159ff75c70051afca1d9"
+}
