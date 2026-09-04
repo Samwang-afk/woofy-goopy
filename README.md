@@ -6,6 +6,18 @@
 
 Woofy Goopy 是一个面向工作模式、Codex 与桌面客户端的数字宠物项目。当前角色 Crown 拥有大眼睛、灰色喙、白色身体和黄色皇冠，依据提供的动作设计稿制作。
 
+## 一键导入
+
+[![Add Woofy Goopy to ChatGPT Work](https://img.shields.io/badge/ChatGPT_Work-Add_Woofy_Goopy-10A37F?logo=openai&logoColor=white)](https://chatgpt.com/s/sharepet_6a9a21be29048191a5b59622cd3cd26a)
+
+打开分享页并确认添加，即可把完整的宠物名称、描述和 v2 Sprite Sheet 导入支持 Pets 的 ChatGPT Work / Codex 客户端。
+
+Codex 桌面端也可以使用固定版本的安装 URI：
+
+```text
+codex://pets/install?name=Woofy%20Goopy&imageUrl=https%3A%2F%2Fraw.githubusercontent.com%2FSamwang-afk%2Fwoofy-goopy%2F65f8e576f3d43af9823ede21f7843b0387832a42%2Fassets%2Fspritesheet.png&description=Absolute%20pigeon%20scholar.&spriteVersionNumber=2
+```
+
 ## 文件
 
 - `assets/spritesheet.png`：工作模式 / Codex v2 透明图集。
@@ -73,17 +85,11 @@ pet.destroy();                 // 卸载时释放帧循环和监听器
 
 ## 工作模式与 Codex
 
-工作模式创建结果和稳定宠物 ID 见 `pet-record.json`（完成创建后写入）。本次没有要求替换当前激活宠物，因此不主动切换原有选择。
+当前宠物采用官方 v2 图集格式：1536×2288、单格 192×208、8 列 11 行。公开分享入口位于上方“一键导入”部分；仓库中的 `assets/spritesheet.png` 也可作为 Electron 或其他客户端的稳定素材源。
 
-支持宠物安装链接的 Codex 版本可使用官方格式：
+安装后，在 ChatGPT 桌面版的 Settings → Pets 中选择 Woofy Goopy；在 Codex CLI 中输入 `/pets` 或 `/pet` 选择。Codex IDE 扩展目前不提供宠物选择器或悬浮宠物。
 
-```text
-codex://pets/install?name=Crown&imageUrl=<URL编码的HTTPS图集地址>&spriteVersionNumber=2
-```
-
-必须使用实际可访问的 HTTPS 图集地址，不能把本地路径填进 `imageUrl`。本套件不公开托管素材，也不把短期下载链接写入持久配置。
-
-官方说明：[Codex 宠物安装链接](https://learn.chatgpt.com/docs/reference/commands#pets)。安装入口可用性取决于宿主是否启用该功能。
+官方说明：[Pets](https://learn.chatgpt.com/docs/pets) · [Codex 宠物安装链接](https://learn.chatgpt.com/docs/reference/commands#pets)。入口是否显示取决于账户、工作区和客户端是否已启用 Pets。
 
 ## 后续改造
 
