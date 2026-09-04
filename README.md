@@ -4,7 +4,7 @@
 
 <h1>Woofy Goopy</h1>
 
-<p><strong>A small digital familiar for ChatGPT Work, Codex, and the desktop.</strong></p>
+<p><strong>A small pigeon digital pet for ChatGPT Work, Codex, and Win/mac/xfce.</strong></p>
 <p><em>Absolute pigeon scholar.</em></p>
 
 <p>
