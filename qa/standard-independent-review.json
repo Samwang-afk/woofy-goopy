@@ -1,0 +1,31 @@
+{
+  "scope": "Independent native-scale visual review of nine standard states and idle-jump-idle transition; no assets edited.",
+  "verdict": "pass_with_warning",
+  "evidence": [
+    "qa/contact-sheet.png",
+    "qa/jump-transition-stills.png",
+    "qa/frames/idle/00.png",
+    "qa/frames/jumping/00.png",
+    "qa/frames/jumping/02.png",
+    "qa/frames/jumping/04.png"
+  ],
+  "findings": [
+    "All nine states preserve crown, large paired eyes, charcoal bill, white pear body, tail and tiny black feet. Head size is visually consistent across states.",
+    "Idle blink, directed drag runs, wave, jump, failed downward gaze, expectant waiting, working chin gesture and review head gesture are readable and distinct enough at contact-sheet scale.",
+    "No clipping, detached effects or missing body parts observed in the reviewed sheet.",
+    "Jump preparation and landing are deliberately crouched, with similar head width to idle. Apex is raised through position rather than pet enlargement. Landing returns to ground within one pixel of idle.",
+    "Jump alpha bboxes: idle [50,80,141,198]; preparation [52,90,140,198]; apex [51,5,141,136]; landing [51,90,140,199]. Five pixels of apex top padding remain."
+  ],
+  "issues": [],
+  "warnings": [
+    {
+      "severity": "minor_visual",
+      "issue": "Thin green chroma fringe remains at silhouette edges and is visible on dark backgrounds; running-left is more affected than running-right.",
+      "evidence": "Final RGBA frames with alpha>64 and G>R+20 and G>B+20 contain 131-183 green-dominant pixels per running-right frame and 276-348 per running-left frame. Other states contain about 51-178. Native dark-background idle/jump inspections show a fine green edge.",
+      "recommendation": "Apply consistent edge despill to final RGBA frames before atlas composition, preserving white fill and yellow crown. Recheck a dark background preview."
+    }
+  ],
+  "limitations": [
+    "Review assessed still frames and transition geometry; temporal smoothness and playback timing were not verified from these still images."
+  ]
+}

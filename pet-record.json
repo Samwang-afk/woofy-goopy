@@ -1,0 +1,26 @@
+{
+  "name": "Crown",
+  "description": "A curious big-eyed crowned bird, quietly thinking, checking and celebrating beside your work.",
+  "pet_id": "pet_6a9a128183a88191bb18e7f41109b9e9",
+  "is_custom": true,
+  "created_for": [
+    "ChatGPT Work mode",
+    "Codex",
+    "Electron portability"
+  ],
+  "sprite_version": 2,
+  "sprite_sheet": {
+    "path": "assets/spritesheet.png",
+    "width": 1536,
+    "height": 2288,
+    "cell_width": 192,
+    "cell_height": 208,
+    "sha256": "70b0255ffbc33f2f52dc44407dd7616dd8eb853a48ad579cf88efa0c25c843ab"
+  },
+  "activation": {
+    "created_active": true,
+    "restored_active_pet_id": "rocky",
+    "crown_active_at_handoff": false
+  },
+  "created_at": "2026-09-04"
+}

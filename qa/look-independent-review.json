@@ -1,0 +1,33 @@
+{
+  "verdict": "accept_with_warning",
+  "scope": "Fresh independent native-scale visual review after row9 regeneration. Reviewed updated ordered look-direction PNG and boundary-review PNG; no image assets modified.",
+  "evidence": [
+    "final/look-directions.png",
+    "qa/boundary-review.png"
+  ],
+  "previous_blocker_status": "resolved",
+  "boundary_findings": [
+    {
+      "transition": "157.5 -> 180",
+      "verdict": "accept_with_warning",
+      "observation": "The previous crouch-to-upright pop is gone. Crown heights, torso height and feet baseline are now close across135,157.5,180,202.5. The transition still changes the eye projection and bill angle visibly as the gaze becomes front/down, but it reads as a head/gaze change without conspicuous character enlargement.",
+      "warning": "Head orientation changes somewhat more at this boundary than at neighboring directions; acceptable for discrete16-direction sprites."
+    },
+    {
+      "transition": "337.5 -> 000",
+      "verdict": "accept_with_warning",
+      "observation": "The three-quarter up-left face changes to a frontal up pose, widening the apparent paired-eye silhouette. Body size and grounded stance remain sufficiently consistent. No conspicuous vertical or identity snap is visible in the updated ordered stills.",
+      "warning": "The up/frontal head projection is still a larger directional step than neighboring frames. The reported area ratio1.20 alone is not a visual blocker."
+    }
+  ],
+  "positive_findings": [
+    "All16 directions retain recognizable crown, eye design, bill, tail and palette.",
+    "Both rows now maintain an upright body and consistent grounded feet.",
+    "No clipping, detached parts or large pose/scale jumps are visible at either reviewed boundary.",
+    "Pupil placement conveys the main cardinal directions and progresses through intermediate directions."
+  ],
+  "issues": [],
+  "limitations": [
+    "This acceptance is based on ordered static frame evidence, not a real-time playback timing assessment."
+  ]
+}

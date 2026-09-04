@@ -1,0 +1,71 @@
+{
+  "ok": true,
+  "atlas": "/workspace/scratch/91248ed7f580/crown-run/final/spritesheet-extended.png",
+  "encoded_bytes": 1317091,
+  "sha256": "70b0255ffbc33f2f52dc44407dd7616dd8eb853a48ad579cf88efa0c25c843ab",
+  "jump": {
+    "idle_baseline": 196,
+    "jump_baselines": [
+      196,
+      180,
+      133,
+      180,
+      197
+    ],
+    "airborne_lift_pixels": 64,
+    "landing_delta_pixels": 1
+  },
+  "look_registration": {
+    "neutral_center_x": 95.5,
+    "look_centers_x": [
+      94.0,
+      93.5,
+      93.5,
+      93.5,
+      93.5,
+      94.0,
+      94.0,
+      94.0,
+      94.0,
+      94.0,
+      93.5,
+      93.5,
+      93.5,
+      94.0,
+      93.5,
+      93.5
+    ],
+    "look_widths": [
+      64,
+      63,
+      63,
+      63,
+      63,
+      64,
+      64,
+      64,
+      70,
+      70,
+      69,
+      69,
+      69,
+      68,
+      65,
+      63
+    ],
+    "maximum_center_drift_pixels": 2.0,
+    "maximum_width_ratio": 1.1111111111111112
+  },
+  "errors": [],
+  "warnings": [
+    "look direction 022.5 accepted with a reviewed warning",
+    "look direction 112.5 accepted with a reviewed warning",
+    "look direction 202.5 accepted with a reviewed warning",
+    "look direction 292.5 accepted with a reviewed warning",
+    "look direction 337.5 accepted with a reviewed warning",
+    "045->067.5 diff is a local outlier (564 pixels vs neighbor average 379)",
+    "157.5->180 diff is a local outlier (983 pixels vs neighbor average 528)",
+    "337.5->000 diff is a local outlier (1664 pixels vs neighbor average 491)",
+    "337.5->000 sprite area ratio is high (1.20)"
+  ]
+}

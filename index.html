@@ -1,0 +1,19 @@
+<!doctype html>
+<html lang="zh-CN">
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta http-equiv="Content-Security-Policy" content="default-src 'self'; img-src 'self' data:; style-src 'self'; script-src 'self'; connect-src 'self'">
+<title>Crown · Pet Kit</title>
+<link rel="stylesheet" href="style.css">
+<body>
+  <header><span>CROWN</span><button id="close" aria-label="关闭">×</button></header>
+  <main>
+    <canvas id="pet" role="img" aria-label="戴皇冠的大眼睛小鸟"></canvas>
+    <p id="status" role="status">正在加载…</p>
+    <label>动作 <select id="state" aria-label="选择动作"></select></label>
+    <label class="small"><input type="checkbox" id="reduced"> 减少动态</label>
+  </main>
+  <script src="manifest.js"></script>
+  <script type="module" src="app.js"></script>
+</body>
+</html>
