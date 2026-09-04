@@ -186,7 +186,7 @@ preview.html     self-contained local preview
 
 ## Attribution
 
-**Artwork courtesy of @Mustroomf.**
+**Artwork courtesy of @GitHub/Mustroomf.**
 
 Code and repository materials are distributed under the terms in [LICENSE](./LICENSE). The Crown edition is supplied as frame-based raster artwork rather than a skeletal animation or editable vector source.
 
