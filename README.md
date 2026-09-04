@@ -19,7 +19,7 @@
   </a>
 </p>
 
-<sub>73 hand-drawn frames · 9 activity states · 16-direction gaze · framework-free Canvas runtime</sub>
+
 
 </div>
 
