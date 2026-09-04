@@ -33,7 +33,7 @@ Woofy Goopy turns agent activity into a visible character state. It works while 
 
 ### [Add Woofy Goopy →](https://chatgpt.com/s/sharepet_6a9a21be29048191a5b59622cd3cd26a)
 
-Open the shared pet page and confirm the import.
+One-liner, works everywhere and everytime. You're welcome.
 
 </div>
 
