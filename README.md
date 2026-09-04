@@ -27,6 +27,17 @@
 
 Woofy Goopy turns agent activity into a visible character state. It works while a task is running, waits when input is required, reacts to failure, reviews completed work, and follows the pointer when idle. The artwork, animation contract, browser runtime, and Electron shell remain separate, so the same character can move between supported hosts without rebuilding the animation system.
 
+## Choose an edition
+
+Woofy Goopy is registered in ChatGPT Work as two independent pets. Selecting one never replaces or deletes the other.
+
+| Edition | Work pet | Rendering | Current status |
+|---|---|---|---|
+| **Classic** | `woofy goopy` | Smooth hand-drawn atlas | Registered · active |
+| **8-bit** | `Crown Pixel` | Crisp ~70×70 logical-pixel artwork | Registered · inactive |
+
+Switch editions from **Settings → Pets**. The 8-bit atlas and its portable state manifest live in [`pets/crown-pixel-v2/`](./pets/crown-pixel-v2/); both editions use the same v2 state contract.
+
 ## Add to ChatGPT Work
 
 <div align="center">
