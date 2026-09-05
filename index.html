@@ -10,10 +10,17 @@
   <main>
     <canvas id="pet" role="img" aria-label="戴皇冠的大眼睛小鸟"></canvas>
     <p id="status" role="status">正在加载…</p>
+    <label>版本
+      <select id="edition" aria-label="选择宠物版本">
+        <option value="normal">Normal</option>
+        <option value="8bit">8-bit</option>
+      </select>
+    </label>
     <label>动作 <select id="state" aria-label="选择动作"></select></label>
     <label class="small"><input type="checkbox" id="reduced"> 减少动态</label>
   </main>
   <script src="manifest.js"></script>
+  <script src="pets/crown-pixel-v2/manifest.js"></script>
   <script type="module" src="app.js"></script>
 </body>
 </html>

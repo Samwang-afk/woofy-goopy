@@ -1,4 +1,4 @@
-import { directionIndex, frameAt, cellRect } from './geometry.js';
+import { animationColumn, directionIndex, frameAt, cellRect } from './geometry.js';
 
 /** Framework-independent sprite renderer. It draws supplied pixels; it never redraws the character. */
 export class PetPlayer {
@@ -11,6 +11,7 @@ export class PetPlayer {
     if (image.naturalWidth !== manifest.atlas.width || image.naturalHeight !== manifest.atlas.height) throw new Error('Atlas dimensions do not match manifest');
     canvas.width = manifest.atlas.cellWidth;
     canvas.height = manifest.atlas.cellHeight;
+    this.context.imageSmoothingEnabled = manifest.rendering?.scaleMode !== 'nearest-neighbor';
     this.reducedMotion = reducedMotion;
     this.state = 'idle';
     this.started = performance.now();
@@ -64,15 +65,16 @@ export class PetPlayer {
     if (this.destroyed || document.hidden) return;
     const animation = this.manifest.animations[this.state];
     if (this.reducedMotion) {
-      this.draw(0, 0);
+      this.draw(animation.row, animationColumn(animation, 0));
     } else if (this.look !== null && this.state === 'idle') {
       this.draw(9 + Math.floor(this.look / 8), this.look % 8);
     } else {
       const frame = frameAt(animation.durationsMs, now - this.started, animation.loop);
       if (frame.done && animation.next) {
         this.setState(animation.next);
-        this.draw(this.manifest.animations[this.state].row, 0);
-      } else this.draw(animation.row, frame.index);
+        const nextAnimation = this.manifest.animations[this.state];
+        this.draw(nextAnimation.row, animationColumn(nextAnimation, 0));
+      } else this.draw(animation.row, animationColumn(animation, frame.index));
     }
     this.raf = requestAnimationFrame(this.tick);
   };

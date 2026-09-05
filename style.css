@@ -6,8 +6,14 @@ button,select,input { -webkit-app-region: no-drag; }
 button { background: transparent; color: inherit; border: 0; font-size: 23px; cursor: pointer; }
 main { display: flex; flex-direction: column; align-items: center; gap: 9px; }
 canvas { width: 192px; height: 208px; cursor: pointer; }
+canvas.pixel-art { image-rendering: pixelated; }
 p { margin: 0; min-height: 18px; }
 label { display: flex; align-items: center; gap: 8px; }
 select { padding: 5px 10px; border-radius: 8px; border: 1px solid #9997; background: #fffdf6; color: #38352d; }
 .small { font-size: 11px; opacity: .75; }
 @media (prefers-color-scheme: dark) { :root { color: #eae5d5; } select { background: #302e27; color: #eae5d5; } }
+body[data-sleeping="true"] { width: 192px; height: 208px; overflow: hidden; }
+body[data-sleeping="true"] header,
+body[data-sleeping="true"] main > :not(canvas) { display: none; }
+body[data-sleeping="true"] main { display: block; width: 192px; height: 208px; }
+body[data-sleeping="true"] canvas { display: block; }
