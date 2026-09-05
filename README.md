@@ -38,7 +38,7 @@ Woofy Goopy is registered in ChatGPT Work as two independent pets. Selecting one
 
 Switch editions from **Settings → Pets**. The 8-bit atlas and its portable state manifest live in [`pets/crown-pixel-v2/`](./pets/crown-pixel-v2/); both editions use the same v2 state contract.
 
-## Crown Pixel — 8-bit edition
+## Foward News Update — 8-bit edition!
 
 <div align="center">
 
