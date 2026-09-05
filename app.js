@@ -8,9 +8,11 @@ const edition = document.querySelector('#edition');
 const reduced = document.querySelector('#reduced');
 
 const editions = {
-  normal: { imageUrl: './assets/spritesheet.png', manifestUrl: './manifest.json' },
-  '8bit': { imageUrl: './pets/crown-pixel-v2/spritesheet.png', manifestUrl: './pets/crown-pixel-v2/manifest.json' }
+  normal: { imageUrl: './assets/spritesheet.png', manifest: window.CROWN_MANIFEST },
+  '8bit': { imageUrl: './pets/crown-pixel-v2/spritesheet.png', manifest: window.CROWN_PIXEL_MANIFEST }
 };
+
+reduced.checked = window.matchMedia?.('(prefers-reduced-motion: reduce)').matches ?? false;
 
 for (const group of STATE_GROUPS) {
   const options = document.createElement('optgroup');
@@ -21,30 +23,47 @@ for (const group of STATE_GROUPS) {
 
 let player;
 let removePointerListener;
-let transitionToken = 0;
+let editionLoadToken = 0;
+let stateTransitionToken = 0;
+
+function setControlsLoading(loading) {
+  edition.disabled = loading;
+  select.disabled = loading;
+  reduced.disabled = loading;
+}
 
 async function loadEdition(name) {
-  const token = ++transitionToken;
+  const token = ++editionLoadToken;
+  ++stateTransitionToken;
   removePointerListener?.();
-  player?.destroy();
+  removePointerListener = undefined;
+  const previousPlayer = player;
+  player = undefined;
+  window.crownPet = undefined;
+  previousPlayer?.destroy();
+  document.body.dataset.sleeping = 'false';
+  window.crownDesktop?.setSleepMode(false);
+  setControlsLoading(true);
+  status.textContent = '正在加载…';
 
-  const config = editions[name];
-  const response = await fetch(config.manifestUrl);
-  if (!response.ok) throw new Error(`Manifest request failed: ${response.status}`);
-  const manifest = withDesktopStates(await response.json());
-  const nextPlayer = await PetPlayer.load(canvas, {
-    imageUrl: config.imageUrl,
-    manifest,
-    reducedMotion: reduced.checked
-  });
-  if (token !== transitionToken) return nextPlayer.destroy();
+  let nextPlayer;
+  try {
+    const config = editions[name];
+    if (!config?.manifest) throw new Error(`Missing bundled manifest: ${name}`);
+    nextPlayer = await PetPlayer.load(canvas, {
+      imageUrl: config.imageUrl,
+      manifest: withDesktopStates(config.manifest),
+      reducedMotion: reduced.checked
+    });
+    if (token !== editionLoadToken) return nextPlayer.destroy();
+  } finally {
+    if (token === editionLoadToken) setControlsLoading(false);
+  }
 
   player = nextPlayer;
   window.crownPet = player;
   canvas.classList.toggle('pixel-art', name === '8bit');
   select.value = 'idle';
-  document.body.dataset.sleeping = 'false';
-  window.crownDesktop?.setSleepMode(false);
   status.textContent = `${name === '8bit' ? '8-bit' : 'Normal'} · 移动鼠标让它看向你`;
 
   const onPointer = ({ x, y }) => {
@@ -61,26 +80,29 @@ async function loadEdition(name) {
 
 async function setSelectedState(state) {
   if (!player) return;
-  const token = ++transitionToken;
-  const sleeping = player.state === 'sleep' || player.state === 'sleep-enter';
+  const activePlayer = player;
+  const token = ++stateTransitionToken;
+  const sleeping = activePlayer.state === 'sleep' || activePlayer.state === 'sleep-enter';
 
   if (state === 'sleep') {
     document.body.dataset.sleeping = 'true';
     window.crownDesktop?.setSleepMode(true);
-    player.setState(player.reducedMotion ? 'sleep' : 'sleep-enter', { restart: true });
+    activePlayer.setState(activePlayer.reducedMotion ? 'sleep' : 'sleep-enter', { restart: true });
     return;
   }
 
   if (sleeping) {
     document.body.dataset.sleeping = 'false';
     window.crownDesktop?.setSleepMode(false);
-    player.setState('sleep-exit', { restart: true });
-    const duration = animationDuration(player.manifest.animations['sleep-exit']);
+    activePlayer.setState('sleep-exit', { restart: true });
+    const duration = activePlayer.reducedMotion
+      ? 0
+      : animationDuration(activePlayer.manifest.animations['sleep-exit']);
     await new Promise(resolve => setTimeout(resolve, duration));
-    if (token !== transitionToken || !player) return;
+    if (token !== stateTransitionToken || player !== activePlayer) return;
   }
 
-  player.setState(state, { restart: true });
+  activePlayer.setState(state, { restart: true });
 }
 
 select.addEventListener('change', () => setSelectedState(select.value));
@@ -91,18 +113,17 @@ edition.addEventListener('change', async () => {
 reduced.addEventListener('change', () => player?.setReducedMotion(reduced.checked));
 canvas.addEventListener('click', () => {
   if (!player) return;
-  if (player.state === 'sleep' || player.state === 'sleep-enter') {
+  if (['sleep', 'sleep-enter', 'sleep-exit'].includes(player.state)) {
     select.value = 'idle';
     setSelectedState('idle');
   } else {
-    player.setState('jumping', { restart: true });
     select.value = 'idle';
+    setSelectedState('jumping');
   }
 });
 
 try {
   await loadEdition(edition.value);
-  reduced.checked = player.reducedMotion;
 } catch (error) {
   status.textContent = `无法加载：${error.message}`;
 }
