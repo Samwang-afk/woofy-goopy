@@ -167,6 +167,8 @@ const pet = await PetPlayer.load(canvas, {
   manifest,
 });
 
+//Adjust Character State Using These Functions:
+
 pet.setState('running');
 pet.setState('waiting');
 pet.setState('review');
