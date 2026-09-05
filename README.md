@@ -38,6 +38,40 @@ Woofy Goopy is registered in ChatGPT Work as two independent pets. Selecting one
 
 Switch editions from **Settings → Pets**. The 8-bit atlas and its portable state manifest live in [`pets/crown-pixel-v2/`](./pets/crown-pixel-v2/); both editions use the same v2 state contract.
 
+## Crown Pixel — 8-bit edition
+
+<div align="center">
+
+<img src="./pets/crown-pixel-v2/previews/idle-jump-idle.gif" width="192" alt="Crown Pixel 8-bit idle and jump animation">
+
+<br>
+
+<sub>Hand-drawn pixel pigeon · original crown and scarf · roughly 70×70 logical-pixel density</sub>
+
+</div>
+
+| Resource | Description |
+|---|---|
+| [Sprite sheet](./pets/crown-pixel-v2/spritesheet.png) | Transparent Work Pets v2 atlas |
+| [Contact sheet](./pets/crown-pixel-v2/contact-sheet.png) | All populated animation and look frames |
+| [Manifest](./pets/crown-pixel-v2/manifest.json) | `PetPlayer`-compatible frame timing and atlas schema |
+| [Variant guide](./pets/crown-pixel-v2/README.md) | Work registration and Electron rendering notes |
+
+The 8-bit atlas is **1536×2288**, arranged as **8×11 cells** of **192×208**. It contains **73 populated frames**, covering nine activity states and sixteen clockwise look directions. The repository copy uses a compact indexed PNG with transparency and should be rendered with nearest-neighbor sampling.
+
+Load it through the existing runtime without an adapter:
+
+```js
+const manifest = await fetch(
+  './pets/crown-pixel-v2/manifest.json',
+).then(response => response.json());
+
+const pet = await PetPlayer.load(canvas, {
+  imageUrl: './pets/crown-pixel-v2/spritesheet.png',
+  manifest,
+});
+```
+
 ## Add to ChatGPT Work
 
 <div align="center">
