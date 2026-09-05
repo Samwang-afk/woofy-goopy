@@ -1,5 +1,6 @@
 const { app, BrowserWindow, ipcMain, screen, Menu } = require('electron');
 const path = require('node:path');
+const { clamp, clampBoundsToWorkArea } = require('./window-bounds.cjs');
 let win;
 let pointerTimer;
 let sleeping = false;
@@ -10,8 +11,10 @@ const SLEEP_WIDTH = 192;
 const SLEEP_HEIGHT = 208;
 const PET_BASELINE_Y = 203;
 
-function clamp(value, min, max) {
-  return Math.max(min, Math.min(max, value));
+function revalidateAwakeBounds() {
+  if (!awakeBounds) return;
+  const display = screen.getDisplayMatching(awakeBounds);
+  awakeBounds = clampBoundsToWorkArea(awakeBounds, display.workArea);
 }
 
 function sleepBounds() {
@@ -41,6 +44,7 @@ function setSleepMode(value) {
     awakeBounds = win.getBounds();
     win.setBounds(sleepBounds(), true);
   } else if (awakeBounds) {
+    revalidateAwakeBounds();
     win.setBounds(awakeBounds, true);
     awakeBounds = undefined;
   }
@@ -76,6 +80,7 @@ app.whenReady().then(() => {
   });
   handleDisplayMetricsChanged = (_event, _display, metrics) => {
     if (sleeping && metrics.some(metric => ['bounds', 'workArea', 'scaleFactor'].includes(metric))) {
+      revalidateAwakeBounds();
       win.setBounds(sleepBounds(), false);
     }
   };

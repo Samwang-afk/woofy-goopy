@@ -62,19 +62,25 @@ async function loadEdition(name) {
 
   player = nextPlayer;
   window.crownPet = player;
+  const activePlayer = player;
   canvas.classList.toggle('pixel-art', name === '8bit');
   select.value = 'idle';
   status.textContent = `${name === '8bit' ? '8-bit' : 'Normal'} · 移动鼠标让它看向你`;
 
   const onPointer = ({ x, y }) => {
     const r = canvas.getBoundingClientRect();
-    player.lookAt(x - r.left - r.width / 2, y - r.top - r.height * .4);
+    activePlayer.lookAt(x - r.left - r.width / 2, y - r.top - r.height * .4);
   };
   if (window.crownDesktop) removePointerListener = window.crownDesktop.onPointer(onPointer);
   else {
     const handlePointerMove = event => onPointer({ x: event.clientX, y: event.clientY });
+    const handlePointerLeave = () => activePlayer.clearLook();
     document.addEventListener('pointermove', handlePointerMove);
-    removePointerListener = () => document.removeEventListener('pointermove', handlePointerMove);
+    document.addEventListener('pointerleave', handlePointerLeave);
+    removePointerListener = () => {
+      document.removeEventListener('pointermove', handlePointerMove);
+      document.removeEventListener('pointerleave', handlePointerLeave);
+    };
   }
 }
 
