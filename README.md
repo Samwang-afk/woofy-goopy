@@ -44,7 +44,11 @@ Switch editions from **Settings → Pets**. The 8-bit atlas and its portable sta
 
 <img src="./pets/crown-pixel-v2/previews/idle-jump-idle.gif" width="192" alt="Crown Pixel 8-bit idle and jump animation">
 
-<br>
+<p>
+  <a href="https://chatgpt.com/s/sharepet_6a9bee4d434881919010e96225365d0f">
+    <img src="https://img.shields.io/badge/Add_8--bit_to-ChatGPT_Work-10A37F?style=for-the-badge&logo=openai&logoColor=white" alt="Add Crown Pixel 8-bit to ChatGPT Work">
+  </a>
+</p>
 
 <sub>Hand-drawn pixel pigeon · original crown and scarf · roughly 70×70 logical-pixel density</sub>
 
