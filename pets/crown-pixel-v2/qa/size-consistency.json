@@ -1,0 +1,22 @@
+{
+  "check": "jump-size-consistency",
+  "scope": "jumping row only",
+  "method": "shared nearest-neighbor scale with centered horizontal registration",
+  "scale": 1.25,
+  "sourceJumpWidths": [99, 99, 97, 95, 99],
+  "repairedJumpWidths": [124, 124, 121, 119, 124],
+  "idleWidthRange": [130, 132],
+  "untouchedFrames": 68,
+  "validation": {
+    "valid": true,
+    "spriteVersion": 2,
+    "width": 1536,
+    "height": 2288,
+    "framesPerRow": [6, 8, 8, 4, 5, 8, 6, 6, 6, 8, 8]
+  },
+  "quality": {
+    "ok": true,
+    "airborneLiftPixels": 36,
+    "landingDeltaPixels": 1
+  }
+}
