@@ -153,6 +153,12 @@ The final two atlas rows provide sixteen clockwise gaze directions at 22.5° int
   <img src="./previews/look-directions.png" width="720" alt="Sixteen gaze directions">
 </p>
 
+### Desktop-only state
+
+The Electron companion extends the standard Work state set with one public `sleep` state for both **Normal** and **8-bit** editions. It uses `sleep-enter → sleep → sleep-exit` internally, reusing selected row 5 poses without changing either Work-compatible atlas.
+
+When sleeping, the transparent window contracts to one `192×208` cell and rests on the lowest visible screen edge: the Windows taskbar, the bottom macOS Dock, or the physical screen edge when the Dock is hidden or vertical. See [the Electron state model](./electron/STATES.md).
+
 ## One character, several hosts
 
 | Host | Included integration | Intended use |

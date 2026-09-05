@@ -18,6 +18,12 @@ export function frameAt(durations, elapsed, loop = true) {
   return { index: 0, done: false };
 }
 
+export function animationColumn(animation, timingIndex) {
+  const column = animation.frameIndices?.[timingIndex] ?? timingIndex;
+  if (!Number.isInteger(column) || column < 0) throw new RangeError('Invalid animation frame column');
+  return column;
+}
+
 export function cellRect(manifest, row, column) {
   if (!Number.isInteger(row) || !Number.isInteger(column) || row < 0 || row >= manifest.atlas.rows || column < 0 || column >= manifest.atlas.columns) throw new RangeError('Cell outside atlas');
   const { cellWidth: w, cellHeight: h } = manifest.atlas;
