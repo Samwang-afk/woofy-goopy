@@ -94,38 +94,54 @@ Official references: [Pets](https://learn.chatgpt.com/docs/pets) · [Pet install
 
 ## Character states
 
-<table>
+### Activity states
+
+<table align="center" width="100%">
   <tr>
-    <th>Idle</th>
-    <th>Working</th>
-    <th>Needs input</th>
+    <td align="center" valign="top" width="33%">
+      <strong>Idle</strong><br><br>
+      <img src="./previews/idle.gif" width="128" alt="Idle animation">
+    </td>
+    <td align="center" valign="top" width="33%">
+      <strong>Working</strong><br><br>
+      <img src="./previews/running.gif" width="128" alt="Working animation">
+    </td>
+    <td align="center" valign="top" width="34%">
+      <strong>Needs input</strong><br><br>
+      <img src="./previews/waiting.gif" width="128" alt="Waiting animation">
+    </td>
   </tr>
   <tr>
-    <td align="center"><img src="./previews/idle.gif" width="128" alt="Idle animation"></td>
-    <td align="center"><img src="./previews/running.gif" width="128" alt="Working animation"></td>
-    <td align="center"><img src="./previews/waiting.gif" width="128" alt="Waiting animation"></td>
+    <td align="center" valign="top" width="33%">
+      <strong>Reviewing</strong><br><br>
+      <img src="./previews/review.gif" width="128" alt="Review animation">
+    </td>
+    <td align="center" valign="top" width="33%">
+      <strong>Failed</strong><br><br>
+      <img src="./previews/failed.gif" width="128" alt="Failed animation">
+    </td>
+    <td align="center" valign="top" width="34%">
+      <strong>Waving</strong><br><br>
+      <img src="./previews/waving.gif" width="128" alt="Waving animation">
+    </td>
   </tr>
   <tr>
-    <th>Reviewing</th>
-    <th>Failed</th>
-    <th>Waving</th>
-  </tr>
-  <tr>
-    <td align="center"><img src="./previews/review.gif" width="128" alt="Review animation"></td>
-    <td align="center"><img src="./previews/failed.gif" width="128" alt="Failed animation"></td>
-    <td align="center"><img src="./previews/waving.gif" width="128" alt="Waving animation"></td>
-  </tr>
-  <tr>
-    <th>Jumping</th>
-    <th>Moving left</th>
-    <th>Moving right</th>
-  </tr>
-  <tr>
-    <td align="center"><img src="./previews/jumping.gif" width="128" alt="Jumping animation"></td>
-    <td align="center"><img src="./previews/running-left.gif" width="128" alt="Running left animation"></td>
-    <td align="center"><img src="./previews/running-right.gif" width="128" alt="Running right animation"></td>
+    <td align="center" valign="top" width="33%">
+      <strong>Jumping</strong><br><br>
+      <img src="./previews/jumping.gif" width="128" alt="Jumping animation">
+    </td>
+    <td align="center" valign="top" width="33%">
+      <strong>Moving left</strong><br><br>
+      <img src="./previews/running-left.gif" width="128" alt="Running left animation">
+    </td>
+    <td align="center" valign="top" width="34%">
+      <strong>Moving right</strong><br><br>
+      <img src="./previews/running-right.gif" width="128" alt="Running right animation">
+    </td>
   </tr>
 </table>
+
+### Look directions
 
 The final two atlas rows provide sixteen clockwise gaze directions at 22.5° intervals.
 
